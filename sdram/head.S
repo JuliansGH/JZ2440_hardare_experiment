@@ -3,8 +3,8 @@
 @ 功能：设置SDRAM，将程序复制到SDRAM，然后跳到SDRAM继续执行
 @*************************************************************************       
 
-.equ        MEM_CTL_BASE,       0x48000000
-.equ        SDRAM_BASE,         0x30000000
+.equ        MEM_CTL_BASE,       0x48000000 @BWSCON寄存器的地址
+.equ        SDRAM_BASE,         0x30000000 @BANK6
 
 .text
 .global _start
@@ -14,7 +14,7 @@ _start:
     bl  copy_steppingstone_to_sdram     @ 复制代码到SDRAM中
     ldr pc, =on_sdram                   @ 跳到SDRAM中继续执行
 on_sdram:
-    ldr sp, =0x34000000                 @ 设置堆栈
+    ldr sp, =0x34000000                 @ 设置堆栈， 64MSDRAM 0x34000000 - 0x30000000 = 0x4000000 = 64M
     bl  main
 halt_loop:
     b   halt_loop
