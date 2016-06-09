@@ -127,7 +127,7 @@ void mmu_init(void)
 {
     unsigned long ttb = 0x30000000;
 
-// ARM休系架构与编程
+// ARM体系架构与编程
 // 嵌入汇编：LINUX内核完全注释
 __asm__(
     "mov    r0, #0\n"
