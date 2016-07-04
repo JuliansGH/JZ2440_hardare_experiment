@@ -4,7 +4,7 @@
 
 int main(void)
 {
-	  char c;
+	char c;
 	char str[200];
 	int i;
 	struct rtc_time dt;

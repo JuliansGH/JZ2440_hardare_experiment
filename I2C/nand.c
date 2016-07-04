@@ -8,7 +8,7 @@
 
 
 #define BUSY			(1)
-/* å‘å‡ºç‰‡é€‰ä¿¡å· */
+/* ·¢³öÆ¬Ñ¡ĞÅºÅ */
 static void nand_select_chip(void)
 {
     int i = 0;

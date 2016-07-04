@@ -12,10 +12,10 @@ void disable_watch_dog(void)
 }
 
 /*
- * for MPLLCON register(main PLL control)ï¼ŒMDIV:19:12, PDIV: 9:4, SDIV:1:0
+ * for MPLLCON register(main PLL control)£¬MDIV:19:12, PDIV: 9:4, SDIV:1:0
  *
  * set MPLLCON:
- * JZ2440ï¼ŒFin = 12MHz
+ * JZ2440£¬Fin = 12MHz
  * MPLL(FCLK) = (2 * m * Fin)/(p * 2^s)
  *   m = MDIV + 8, p = PDIV + 2, s = SDIV
  *
@@ -32,9 +32,9 @@ void clock_init(void)
 	CLKDIVN = 0x03;//FCLK:HCLK:PCLK = 1:2:4 no need set CAMDIVN, HDIVN=1,PDIVN=1
 
 	__asm__(									/* if HDIVN is not 0,change fast bus mode to asynchronous bus mode*/
-	    "mrc    p15, 0, r1, c1, c0, 0\n"        /* è¯»å‡ºæ§åˆ¶å¯„å­˜å™¨ */
-	    "orr    r1, r1, #0xc0000000\n"          /* è®¾ç½®ä¸ºâ€œasynchronous bus modeâ€ */
-	    "mcr    p15, 0, r1, c1, c0, 0\n"        /* å†™å…¥æ§åˆ¶å¯„å­˜å™¨ */
+	    "mrc    p15, 0, r1, c1, c0, 0\n"        /* ¶Á³ö¿ØÖÆ¼Ä´æÆ÷ */
+	    "orr    r1, r1, #0xc0000000\n"          /* ÉèÖÃÎª¡°asynchronous bus mode¡± */
+	    "mcr    p15, 0, r1, c1, c0, 0\n"        /* Ğ´Èë¿ØÖÆ¼Ä´æÆ÷ */
 	    );
 
 	MPLLCON = ( (0x2A<<12) | (0x01<<9) | 0x01 );//MDIV:42,PDIV:1,SDIV:1
@@ -55,7 +55,7 @@ void memsetup(void)
 											/* | XXXX | XXXX | XXXX | XXX1 | 1XXX | XXXX | XXXX | 0101 |
 											 * [16,15]:MT       11      Memory Type
 											 * [3,2]:Trcd       01      RAS to CAS delay
-											 * [0,1]SCAN        01      SDRAMåˆ—åœ°å€ä½æ•°ï¼Œä¹ä½
+											 * [0,1]SCAN        01      SDRAMÁĞµØÖ·Î»Êı£¬¾ÅÎ»
 											 */
 	p[7] = 0x00018005;     //BANKCON6
 	p[8] = 0x00018005;     //BANKCON7

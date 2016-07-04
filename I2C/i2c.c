@@ -1,8 +1,8 @@
 #include "init.h"
 #include "i2c.h"
 /*
- * I2Cä¸­æ–­æœåŠ¡ç¨‹åº
- * æ ¹æ®å‰©ä½™çš„æ•°æ®é•¿åº¦é€‰æ‹©ç»§ç»­ä¼ è¾“æˆ–è€…ç»“æŸ
+ * I2CÖÐ¶Ï·þÎñ³ÌÐò
+ * ¸ù¾ÝÊ£ÓàµÄÊý¾Ý³¤¶ÈÑ¡Ôñ¼ÌÐø´«Êä»òÕß½áÊø
  */
 void I2CIntHandle(void)
 {
@@ -11,19 +11,35 @@ void I2CIntHandle(void)
 
 void i2c_init(void)
 {
-    GPEUP  |= 0xc000;       // ç¦æ­¢å†…éƒ¨ä¸Šæ‹‰
-    GPECON |= 0xa0000000;   // é€‰æ‹©å¼•è„šåŠŸèƒ½ï¼šGPE15:IICSDA, GPE14:IICSCL
+    GPEUP  |= 0xc000;       // ½ûÖ¹ÄÚ²¿ÉÏÀ­
+    GPECON |= 0xa0000000;   // Ñ¡ÔñÒý½Å¹¦ÄÜ£ºGPE15:IICSDA, GPE14:IICSCL
 
     INTMSK &= ~(BIT_IIC);
 
-    /* bit[7] = 1, ä½¿èƒ½ACK
+    /* bit[7] = 1, Ê¹ÄÜACK
      * bit[6] = 0, IICCLK = PCLK/16
-     * bit[5] = 1, ä½¿èƒ½ä¸­æ–­
+     * bit[5] = 1, Ê¹ÄÜÖÐ¶Ï
      * bit[3:0] = 0xf, Tx clock = IICCLK/16
      * PCLK = 50MHz, IICCLK = 3.125MHz, Tx Clock = 0.195MHz
      */
     IICCON = (1<<7) | (0<<6) | (1<<5) | (0xf);  // 0xaf
 
     IICADD  = 0x10;     // S3C24xx slave address = [7:1]
-    IICSTAT = 0x10;     // I2Cä¸²è¡Œè¾“å‡ºä½¿èƒ½(Rx/Tx)
+    IICSTAT = 0x10;     // I2C´®ÐÐÊä³öÊ¹ÄÜ(Rx/Tx)
+}
+static int test()
+{
+	while()
+	{
+		a = b;
+		
+	}
+	while(1)
+	{
+	
+	}
+	while()
+	{
+		
+	}
 }

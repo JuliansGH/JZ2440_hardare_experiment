@@ -3,7 +3,7 @@
 #include "interrupt.h"
 #include "i2c.h"
 
-void (*isr_handle_array[50])(void);//å‡½æ•°æŒ‡é’ˆæ•°ç»„
+void (*isr_handle_array[50])(void);//º¯ÊıÖ¸ÕëÊı×é
 
 void Dummy_isr(void)
 {
@@ -20,8 +20,8 @@ void init_irq(int void)
 		isr_handle_array[i] = Dummy_isr;
 	}
 
-	INTMOD = 0x0;	      // æ‰€æœ‰ä¸­æ–­éƒ½è®¾ä¸ºIRQæ¨¡å¼
-	INTMSK = BIT_ALLMSK;  // å…ˆå±è”½æ‰€æœ‰ä¸­æ–­
+	INTMOD = 0x0;	      // ËùÓĞÖĞ¶Ï¶¼ÉèÎªIRQÄ£Ê½
+	INTMSK = BIT_ALLMSK;  // ÏÈÆÁ±ÎËùÓĞÖĞ¶Ï
 
 	isr_handle_array[ISR_IIC_OFT]  = I2CIntHandle;//27
 }
